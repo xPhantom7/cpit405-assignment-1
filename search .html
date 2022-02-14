@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cpit405-assignment-1 Page 2</title>
+</head>
+<body>
+    <h1>Fillter Image</h1>
+
+    <input type="text" id="in" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+    <br>
+    
+    <br>
+    <ul id="CWU">
+        <li>
+            <img src="C:\Users\ADMIN\Desktop\pic\kau.jpg" alt="kau" width="300" height="200">
+        </li>
+        <hr>
+        <br>
+        <li>
+            <img src="C:\Users\ADMIN\Desktop\pic\jeddah.jpg" alt="jeddah" width="300" height="200">
+        </li>
+        <hr>
+        <br>
+        <li>
+            <img src="C:\Users\ADMIN\Desktop\pic\kaufcit.jpg" alt="kaufcit" width="400" height="200">
+        </li>
+        <hr>
+        <br>
+        <li>
+            <img src="C:\Users\ADMIN\Desktop\pic\makkah.jpg" alt="makkah" width="400" height="200">
+        </li>
+        <hr>
+        <br>
+        <li>
+            <img src="C:\Users\ADMIN\Desktop\pic\amalgora.jpg" alt="al-qura" width="400" height="200">
+        </li>
+        <hr>
+        <br>
+        <li>
+            <img src="C:\Users\ADMIN\Desktop\pic\amalgorait.jpg" alt="al-quraIT" width="400" height="200">
+        </li>
+        <hr>
+        <br>
+    </ul>
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("in");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("CWU");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+        </script>
+          <form method="get" action="Home.html">
+            <button type="submit">Previous Page</button>
+        </form>
+        <br>
+
+        <form method="get" action="Submit.html">
+            <button type="submit">Next Page</button>
+        </form>
+
+</body>
+</html>

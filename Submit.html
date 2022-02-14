@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cpit405-assignment-1 Page 3</title>
+</head>
+<body>
+    <h1>Choose Image</h1>
+
+    <input id="fileupload" type="file" />
+    <hr />
+
+    <div id="dvPreview">
+    </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $("#fileupload").change(function () {
+                $("#dvPreview").html("");
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                if (regex.test($(this).val().toLowerCase())) {
+                    if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+                        $("#dvPreview").show();
+                        $("#dvPreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+                    }
+                    else {
+                        if (typeof (FileReader) != "undefined") {
+                            $("#dvPreview").show();
+                            $("#dvPreview").append("<img />");
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $("#dvPreview img").attr("src", e.target.result);
+                            }
+                            reader.readAsDataURL($(this)[0].files[0]);
+                        } else {
+                            alert("This browser does not support FileReader.");
+                        }
+                    }
+                } else {
+                    alert("Please upload a valid image file.");
+                }
+            });
+        });
+    </script>
+
+    
+    <form method="get" action="https://cpit405.gitlab.io/">
+        <button type="submit">Cpit405 Page</button>
+    </form>
+    <br><br>
+
+
+
+    <form method="get" action="search .html">
+        <button type="submit">Back</button>
+    </form>
+</body>
+</html>
